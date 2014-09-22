@@ -1,5 +1,4 @@
-                
-        
+				
 stmt     -> var loc;  
           | var loc := bool;
           | loc := bool;
@@ -38,5 +37,4 @@ factor   -> ( bool )
           | real
           | true
           | false
-        
-                
+				
