@@ -55,6 +55,12 @@
     <Filter Include="Source\源文件\Debug">
       <UniqueIdentifier>{c311a469-243c-4476-8809-19c77f806b6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\头文件\common">
+      <UniqueIdentifier>{728949fb-088c-43b3-839b-c41dd0ed7c22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\common">
+      <UniqueIdentifier>{bf1638df-8672-4ecb-8d55-d69b0f81558b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Doc\Lang.md">
@@ -70,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="TestTool.h">
       <Filter>Source\头文件\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="std.h">
+      <Filter>Source\头文件\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

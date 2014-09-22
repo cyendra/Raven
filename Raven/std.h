@@ -1,0 +1,15 @@
+#pragma once
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <list>
+#include <queue>
+#include <stack>
+#include <deque>
+#include <map>
+#include <set>
+#include <initializer_list>
+#include <memory>

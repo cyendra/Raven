@@ -7,6 +7,7 @@
 			  | while bool do stmt;
 			  | block;
 			  | break;
+			  | continue;
 	decls	 -> var decl;
 	decl	 -> set
 			  | decl, set
@@ -31,6 +32,7 @@
 			  | term
 	term     -> term * unary
 			  | term / unary
+			  | term % unary
 			  | unary
 	unary    -> not unary
 			  | - unary

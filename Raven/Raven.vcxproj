@@ -82,6 +82,7 @@
     <None Include="..\Doc\Package.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="std.h" />
     <ClInclude Include="TestTool.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>

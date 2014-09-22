@@ -3,7 +3,7 @@
 using namespace Debug::TestTool;
 
 int main() {
-	SizeOfData();
+	TestStringStreamBuf();
 	system("pause");
 	return 0;
 }
