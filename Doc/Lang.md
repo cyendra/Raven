@@ -1,5 +1,5 @@
-				
-	Raven v0.1 �﷨
+﻿				
+	Raven v0.1 语法
 	stmt     -> var loc;  
 			  | var loc := bool;
 			  | loc := bool;
