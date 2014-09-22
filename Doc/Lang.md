@@ -32,8 +32,10 @@
 			  | factor
 	factor   -> ( bool )
 			  | loc
-			  | num
+			  | integer
 			  | real
 			  | true
 			  | false
-				
+	integer  -> [1-9][0-9]*
+			  | 0
+	real	 -> [0-9]+\.[0-9]+

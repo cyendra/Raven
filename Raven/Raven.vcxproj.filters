@@ -16,9 +16,42 @@
     <Filter Include="Doc">
       <UniqueIdentifier>{ad8aeb7f-5c80-4577-9738-222b941950aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Lexer">
+      <UniqueIdentifier>{6283c74d-c63f-458a-8e9a-2bad6b82d98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Parser">
+      <UniqueIdentifier>{a4727bf4-2661-4473-a019-e1e8672be6a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lexer">
+      <UniqueIdentifier>{ac67d9a0-e346-45bc-af87-241a1cc53d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Parser">
+      <UniqueIdentifier>{80b6c562-e2ac-4cf3-883d-628d87c87416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Raven">
+      <UniqueIdentifier>{c8468559-4daa-4a95-8473-5b1a73643bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Raven">
+      <UniqueIdentifier>{4618bd7c-cb71-490f-a3d4-187ed6df0e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Inter">
+      <UniqueIdentifier>{8225962b-8ff9-48ea-ba67-613433f5643d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Inter">
+      <UniqueIdentifier>{7e9d16b2-fdf3-4e08-adb8-5c81dd9a8b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Symbols">
+      <UniqueIdentifier>{77ce652d-4815-4aa6-b1f0-86fd1c1ac2cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Symbols">
+      <UniqueIdentifier>{ed779790-43de-4ec5-b176-99c5b7b3ba61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Doc\Lang.md">
+      <Filter>Doc</Filter>
+    </None>
+    <None Include="..\Doc\Package.md">
       <Filter>Doc</Filter>
     </None>
   </ItemGroup>
