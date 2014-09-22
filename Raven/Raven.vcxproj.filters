@@ -46,6 +46,12 @@
     <Filter Include="源文件\Symbols">
       <UniqueIdentifier>{ed779790-43de-4ec5-b176-99c5b7b3ba61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Debug">
+      <UniqueIdentifier>{7d0a892c-f4cf-47a6-850a-2a3fa6a6b605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Debug">
+      <UniqueIdentifier>{c311a469-243c-4476-8809-19c77f806b6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Doc\Lang.md">

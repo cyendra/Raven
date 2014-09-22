@@ -1,19 +1,27 @@
 ﻿Raven v0.1 的包结构  
 ===================
   
-Lexer:  
+Lexer
+-----
 	词法分析器  
 	
-Parser:  
+Parser
+------  
 	语法分析器  
 	  
-Symbols:  
+Symbols
+-------  
 	符号表  
 	  
-Inter:  
+Inter
+----- 
 	表达式的中间代码  
 	  
-Raven:  
+Raven
+=====  
 	供外部调用的Raven语言核心部分  
 
+Debug
+-----
+	测试用  
 
