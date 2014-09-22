@@ -81,6 +81,14 @@
     <None Include="..\Doc\Lang.md" />
     <None Include="..\Doc\Package.md" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestTool.h" />
+    <ClInclude Include="Token.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Token.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

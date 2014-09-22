@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -16,40 +8,51 @@
     <Filter Include="Doc">
       <UniqueIdentifier>{ad8aeb7f-5c80-4577-9738-222b941950aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Lexer">
+    <Filter Include="Source">
+      <UniqueIdentifier>{0505aa90-5925-40cd-bfaa-431f2a0e4d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source\头文件\Lexer">
       <UniqueIdentifier>{6283c74d-c63f-458a-8e9a-2bad6b82d98c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Parser">
+    <Filter Include="Source\头文件\Parser">
       <UniqueIdentifier>{a4727bf4-2661-4473-a019-e1e8672be6a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Lexer">
-      <UniqueIdentifier>{ac67d9a0-e346-45bc-af87-241a1cc53d07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\Parser">
-      <UniqueIdentifier>{80b6c562-e2ac-4cf3-883d-628d87c87416}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Raven">
+    <Filter Include="Source\头文件\Raven">
       <UniqueIdentifier>{c8468559-4daa-4a95-8473-5b1a73643bb2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Raven">
-      <UniqueIdentifier>{4618bd7c-cb71-490f-a3d4-187ed6df0e1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Inter">
+    <Filter Include="Source\头文件\Inter">
       <UniqueIdentifier>{8225962b-8ff9-48ea-ba67-613433f5643d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Inter">
-      <UniqueIdentifier>{7e9d16b2-fdf3-4e08-adb8-5c81dd9a8b43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Symbols">
+    <Filter Include="Source\头文件\Symbols">
       <UniqueIdentifier>{77ce652d-4815-4aa6-b1f0-86fd1c1ac2cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Symbols">
-      <UniqueIdentifier>{ed779790-43de-4ec5-b176-99c5b7b3ba61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Debug">
+    <Filter Include="Source\头文件\Debug">
       <UniqueIdentifier>{7d0a892c-f4cf-47a6-850a-2a3fa6a6b605}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Debug">
+    <Filter Include="Source\源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\源文件\Lexer">
+      <UniqueIdentifier>{ac67d9a0-e346-45bc-af87-241a1cc53d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Parser">
+      <UniqueIdentifier>{80b6c562-e2ac-4cf3-883d-628d87c87416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Raven">
+      <UniqueIdentifier>{4618bd7c-cb71-490f-a3d4-187ed6df0e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Inter">
+      <UniqueIdentifier>{7e9d16b2-fdf3-4e08-adb8-5c81dd9a8b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Symbols">
+      <UniqueIdentifier>{ed779790-43de-4ec5-b176-99c5b7b3ba61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Debug">
       <UniqueIdentifier>{c311a469-243c-4476-8809-19c77f806b6c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -60,5 +63,21 @@
     <None Include="..\Doc\Package.md">
       <Filter>Doc</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Token.h">
+      <Filter>Source\头文件\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTool.h">
+      <Filter>Source\头文件\Debug</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Token.cpp">
+      <Filter>Source\源文件\Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source\源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

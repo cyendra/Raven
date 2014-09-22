@@ -1,13 +1,18 @@
 ﻿				
 	Raven v0.1 语法
-	stmt     -> var loc;  
-			  | var loc := bool;
-			  | loc := bool;
-			  | if bool do stmt;
+	stmts	 -> stmts stmt
+	stmt     -> decls;
+			  | if bool then stmt;
+			  | if bool then stmt else stmt;
 			  | while bool do stmt;
 			  | block;
 			  | break;
-	block    -> begin stmt end
+	decls	 -> var decl;
+	decl	 -> set
+			  | decl, set
+	set		 -> loc
+			  | loc := bool
+	block    -> begin stmts end
 	loc      -> id
 	bool     -> bool or join
 			  | join
