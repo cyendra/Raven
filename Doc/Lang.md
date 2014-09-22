@@ -1,4 +1,5 @@
 				
+	Raven v0.1 Óï·¨
 	stmt     -> var loc;  
 			  | var loc := bool;
 			  | loc := bool;
@@ -6,8 +7,6 @@
 			  | while bool do stmt;
 			  | block;
 			  | break;
-			  | return;
-			  | return bool;
 	block    -> begin stmt end
 	loc      -> id
 	bool     -> bool or join
