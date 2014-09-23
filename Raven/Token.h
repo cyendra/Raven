@@ -38,6 +38,8 @@ namespace RavenInternal {
 		Token(Tag type);
 		Token(Tag type, std::string text);
 		Token(std::string text);
+		virtual void SetLineNumber(int line);
+		virtual int GetLineNumber();
 		virtual bool IsType(Tag type);
 		virtual void SetType(Tag type);
 		virtual Tag GetType();
@@ -52,6 +54,7 @@ namespace RavenInternal {
 	private:
 		Tag _type;
 		std::string _text;
+		int _lineNumber;
 	};
 
 	/*************************************************

@@ -8,13 +8,21 @@ namespace RavenInternal {
 
 	Token::~Token() { }
 
-	Token::Token() : _type(Tag::UNKOWN), _text("Null") { }
+	Token::Token() : _type(Tag::UNKOWN), _text("Null"), _lineNumber(0) { }
 
-	Token::Token(Tag type) : _type(type), _text("Null") { }
+	Token::Token(Tag type) : _type(type), _text("Null"), _lineNumber(0) { }
 
-	Token::Token(Tag type, std::string text) : _type(type), _text(text) { }
+	Token::Token(Tag type, std::string text) : _type(type), _text(text), _lineNumber(0) { }
 
-	Token::Token(std::string text) : _type(Tag::UNKOWN), _text(text) { }
+	Token::Token(std::string text) : _type(Tag::UNKOWN), _text(text), _lineNumber(0) { }
+
+	void Token::SetLineNumber(int line) {
+		_lineNumber = line;
+	}
+
+	int Token::GetLineNumber() {
+		return _lineNumber;
+	}
 
 	bool Token::IsType(Tag type) {
 		return type == _type;

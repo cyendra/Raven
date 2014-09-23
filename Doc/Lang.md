@@ -46,3 +46,17 @@
 	integer  -> [1-9][0-9]*
 			  | 0
 	real	 -> [0-9]+\.[0-9]+
+
+
+	关键字与符号
+	var if then else while do begin end break return continue
+	true false and or not
+	+ - * / %
+	:= = > < >= <= <>
+	( ) { }
+	; . ,
+	
+
+
+
+

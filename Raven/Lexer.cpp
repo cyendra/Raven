@@ -133,6 +133,7 @@ namespace RavenInternal {
 		for (peek = ' ';;) {
 			auto tok = Scan();
 			if (tok->IsType(Token::END_OF_LINE)) break;
+			tok->SetLineNumber(lineNumber);
 			queue.push_back(tok);
 		}
 	}
