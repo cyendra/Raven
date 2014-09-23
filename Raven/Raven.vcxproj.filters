@@ -55,11 +55,17 @@
     <Filter Include="Source\源文件\Debug">
       <UniqueIdentifier>{c311a469-243c-4476-8809-19c77f806b6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\头文件\common">
+    <Filter Include="Source\头文件\Common">
       <UniqueIdentifier>{728949fb-088c-43b3-839b-c41dd0ed7c22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\源文件\common">
+    <Filter Include="Source\源文件\Common">
       <UniqueIdentifier>{bf1638df-8672-4ecb-8d55-d69b0f81558b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\头文件\Value">
+      <UniqueIdentifier>{633c30e5-de59-4c72-a1e4-37270b85d652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\源文件\Value">
+      <UniqueIdentifier>{95de8acf-e62f-4e37-9781-396ddeb8201c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,7 +84,7 @@
       <Filter>Source\头文件\Debug</Filter>
     </ClInclude>
     <ClInclude Include="std.h">
-      <Filter>Source\头文件\common</Filter>
+      <Filter>Source\头文件\Common</Filter>
     </ClInclude>
     <ClInclude Include="Lexer.h">
       <Filter>Source\头文件\Lexer</Filter>
@@ -88,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Source\头文件\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.h">
+      <Filter>Source\头文件\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Source\头文件\Inter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +114,12 @@
     </ClCompile>
     <ClCompile Include="Reader.cpp">
       <Filter>Source\源文件\Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="Value.cpp">
+      <Filter>Source\源文件\Value</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source\源文件\Inter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
