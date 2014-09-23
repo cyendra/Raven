@@ -1,5 +1,5 @@
 #include "Token.h"
-
+#include "Debug.h"
 namespace RavenInternal {
 
 	/*************************************************
@@ -52,6 +52,10 @@ namespace RavenInternal {
 		return "Null";
 	}
 
+	std::shared_ptr<Token> Token::GetEOL() {
+		return std::shared_ptr<Token>(new Token(END_OF_LINE));
+	}
+
 	/*************************************************
 	IntegerToken
 	*************************************************/
@@ -89,6 +93,10 @@ namespace RavenInternal {
 		return str;
 	}
 
+	std::shared_ptr<Token> IntegerToken::GetToken(int value, std::string text) {
+		return std::shared_ptr<Token>(new IntegerToken(value, text));
+	}
+
 	/*************************************************
 	RealToken
 	*************************************************/
@@ -123,6 +131,10 @@ namespace RavenInternal {
 		return str;
 	}
 
+	std::shared_ptr<Token> RealToken::GetToken(double value, std::string text) {
+		return std::shared_ptr<Token>(new RealToken(value, text));
+	}
+
 	/*************************************************
 	BooleanToken
 	*************************************************/
@@ -152,6 +164,10 @@ namespace RavenInternal {
 	std::string BooleanToken::GetString(){
 		if (_value) return "true";
 		else return "false";
+	}
+
+	std::shared_ptr<Token> BooleanToken::GetToken(bool value, std::string text) {
+		return std::shared_ptr<Token>(new BooleanToken(value, text));
 	}
 
 	/*************************************************
@@ -191,6 +207,10 @@ namespace RavenInternal {
 		return _value;
 	}
 
+	std::shared_ptr<Token> StringToken::GetToken(std::string value, std::string text) {
+		return std::shared_ptr<Token>(new StringToken(value, text));
+	}
+
 	/*************************************************
 	WordToken
 	*************************************************/
@@ -202,6 +222,7 @@ namespace RavenInternal {
 	WordToken::~WordToken() {}
 
 	std::shared_ptr<Token> WordToken::GetWord(std::string word) {
+		DISPLAY(0, word, word.size());
 		if (word == "var") {
 			return VarWord();
 		}

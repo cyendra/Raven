@@ -42,6 +42,17 @@ namespace Debug {
 			cout << d << endl;
 		}
 
+		void TestStringPushZero() {
+			std::string s("123");
+			s.push_back(0);
+			s.push_back(0);
+			s.push_back('4');
+			cout << s.length() << endl;
+			cout << s.size() << endl;
+			cout << s << endl;
+			cout << (int)s[3] << endl;
+		}
+
 	}
 
 }

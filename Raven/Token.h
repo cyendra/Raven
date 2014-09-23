@@ -30,7 +30,7 @@ namespace RavenInternal {
 			INTEGER, REAL, STRING, BOOLEAN, // 四大常量类型
 			LP, RP, LC, RC, // ( ) { }
 			IDENTIFIER, FUNCTION, // 变量和函数
-			SEM, END_OF_FILE, // 分号和文件尾
+			SEM, END_OF_FILE, END_OF_LINE, // 分号和文件尾
 			DOT, COMMA, // 为点调用预留
 			UNKOWN // 未解之谜
 		};
@@ -48,6 +48,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~Token();
+		static std::shared_ptr<Token> GetEOL();
 	private:
 		Tag _type;
 		std::string _text;
@@ -68,6 +69,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~IntegerToken();
+		static std::shared_ptr<Token> GetToken(int value, std::string text);
 	private:
 		int _value;
 	};
@@ -87,6 +89,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~RealToken();
+		static std::shared_ptr<Token> GetToken(double value, std::string text);
 	private:
 		double _value;
 	};
@@ -106,6 +109,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~BooleanToken();
+		static std::shared_ptr<Token> GetToken(bool value, std::string text);
 	private:
 		bool _value;
 	};
@@ -124,6 +128,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~StringToken();
+		static std::shared_ptr<Token> GetToken(std::string value, std::string text);
 	private:
 		std::string _value;
 	};
