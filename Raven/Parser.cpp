@@ -1,12 +1,13 @@
-#include "Node.h"
+#include "Parser.h"
 
 namespace RavenInternal {
 
 	/***************************************************************************
-	Value
+	Parser
 	***************************************************************************/
 
-	Node::Node() { }
-	Node::~Node() { }
+	Parser::Parser() { }
+
+	Parser::~Parser() { }
 
 }

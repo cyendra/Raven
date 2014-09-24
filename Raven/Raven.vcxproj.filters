@@ -75,8 +75,6 @@
     <None Include="..\Doc\Package.md">
       <Filter>Doc</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Token.h">
@@ -103,6 +101,12 @@
     <ClInclude Include="Node.h">
       <Filter>Source\头文件\Inter</Filter>
     </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Source\头文件\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment.h">
+      <Filter>Source\头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Token.cpp">
@@ -122,6 +126,12 @@
     </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Source\源文件\Inter</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source\源文件\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment.cpp">
+      <Filter>Source\源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

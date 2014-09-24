@@ -80,13 +80,13 @@
   <ItemGroup>
     <None Include="..\Doc\Lang.md" />
     <None Include="..\Doc\Package.md" />
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="Environment.h" />
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="Reader.h" />
     <ClInclude Include="std.h" />
     <ClInclude Include="TestTool.h" />
@@ -94,9 +94,11 @@
     <ClInclude Include="Value.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Environment.cpp" />
     <ClCompile Include="Lexer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Reader.cpp" />
     <ClCompile Include="Token.cpp" />
     <ClCompile Include="Value.cpp" />

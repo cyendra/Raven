@@ -2,28 +2,21 @@
 Raven Lang 0.1
 Developer: cyendra
 Classes:
-Reader
+Environment
 ***************************************************************************/
-#pragma once
 
-#include "std.h"
+#pragma once
 
 namespace RavenInternal {
 
 	/***************************************************************************
-	Reader
+	Environment
 	***************************************************************************/
 
-	class Reader {
-	private:
-		const static int BUF_SIZE = 1024;
-		bool Eof;
-		char buf[BUF_SIZE];
+	class Environment {
 	public:
-		Reader();
-		virtual ~Reader();
-		virtual bool HasMore();
-		virtual std::string ReadLine();
+		Environment();
+		virtual ~Environment();
 	};
 
 }

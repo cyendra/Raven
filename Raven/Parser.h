@@ -2,28 +2,34 @@
 Raven Lang 0.1
 Developer: cyendra
 Classes:
-Reader
+Parser
 ***************************************************************************/
+
 #pragma once
 
 #include "std.h"
+#include "Token.h"
+#include "Lexer.h"
+#include "Node.h"
 
 namespace RavenInternal {
 
 	/***************************************************************************
-	Reader
+	Parser
 	***************************************************************************/
 
-	class Reader {
-	private:
-		const static int BUF_SIZE = 1024;
-		bool Eof;
-		char buf[BUF_SIZE];
+	class Parser {
 	public:
-		Reader();
-		virtual ~Reader();
-		virtual bool HasMore();
-		virtual std::string ReadLine();
+		Parser();
+		virtual ~Parser();
+		std::shared_ptr<Stmt> GetStmt();
+		std::shared_ptr<Expr> GetExpr();
+	private:
+		Lexer lex;
+		std::shared_ptr<Token> look;
+		bool Match(Token::Tag type);
+		void Move();
+		std::shared_ptr<Stmt> stmt();
 	};
 
 }
