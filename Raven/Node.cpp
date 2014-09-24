@@ -279,6 +279,7 @@ namespace RavenInternal {
 			rs = stmt->Eval(env);
 			if (rs->IsCtrl(Value::BREAK) || rs->IsCtrl(Value::RETURN)) break;
 		}
+		if (rs->IsCtrl(Value::BREAK)) rs->SetCtrl(Value::NONE);
 		return rs;
 	}
 
