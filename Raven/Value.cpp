@@ -134,6 +134,144 @@ namespace RavenInternal {
 		}
 	}
 
+	std::shared_ptr<Value> Value::Equal(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() == tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() == tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() == tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() == tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
+	std::shared_ptr<Value> Value::NotEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() != tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() != tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() != tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() != tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
+	std::shared_ptr<Value> Value::GreatThan(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() > tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() > tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() > tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() > tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
+	std::shared_ptr<Value> Value::LessThan(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() < tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() < tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() < tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() < tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
+	std::shared_ptr<Value> Value::GreatEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() >= tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() >= tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() >= tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() >= tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
+	std::shared_ptr<Value> Value::LessEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+		auto tp = Cast(tp1, tp2);
+		if (tp == Type::STRING) {
+			bool b = tp1->GetString() <= tp2->GetString();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::REAL) {
+			bool b = tp1->GetReal() <= tp2->GetReal();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::INTEGER) {
+			bool b = tp1->GetInteger() <= tp2->GetInteger();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else if (tp == Type::BOOLEAN) {
+			bool b = tp1->GetBoolean() <= tp2->GetBoolean();
+			return std::shared_ptr<Value>(new BooleanValue(b));
+		}
+		else {
+			return std::shared_ptr<Value>(new BooleanValue(false));
+		}
+	}
+
 	Value::Type Value::Cast(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
 		if (tp1->IsType(Type::UNKOWN) || tp2->IsType(Type::UNKOWN)) return Type::UNKOWN;
 		if (tp1->IsType(Type::STRING) || tp2->IsType(Type::STRING)) return Type::STRING;
@@ -261,6 +399,5 @@ namespace RavenInternal {
 	std::string StringValue::GetString(){
 		return _value;
 	}
-
 
 }

@@ -53,11 +53,9 @@ namespace RavenInternal {
 		virtual void Error(std::string s);
 		virtual void SetLexLine(int lexLine);
 		virtual int GetLexLine();
-		virtual void SetValue(std::shared_ptr<Value> value);
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		int _lexLine;
-		std::shared_ptr<Value> _value;
 	};
 
 	/***************************************************************************
@@ -71,7 +69,7 @@ namespace RavenInternal {
 		Expr(std::shared_ptr<Token> tok);
 		virtual ~Expr();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Token> op;
 	};
 
@@ -87,7 +85,8 @@ namespace RavenInternal {
 		Id(std::shared_ptr<Token> tok);
 		virtual ~Id();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+		virtual std::shared_ptr<Token> GetIdToken();
+	protected:
 	};
 
 	/***************************************************************************
@@ -100,7 +99,7 @@ namespace RavenInternal {
 		Op(std::shared_ptr<Token> tok);
 		virtual ~Op();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -114,7 +113,7 @@ namespace RavenInternal {
 		Arith(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x1, std::shared_ptr<Expr> x2);
 		virtual ~Arith();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr1, expr2;
 	};
 
@@ -128,7 +127,7 @@ namespace RavenInternal {
 		Unary(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x);
 		virtual ~Unary();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr;
 	};
 
@@ -143,7 +142,7 @@ namespace RavenInternal {
 		Logical(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x1, std::shared_ptr<Expr> x2);
 		virtual ~Logical();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr1, expr2;
 	};
 
@@ -156,7 +155,7 @@ namespace RavenInternal {
 		And(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x1, std::shared_ptr<Expr> x2);
 		virtual ~And();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -168,7 +167,7 @@ namespace RavenInternal {
 		Or(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x1, std::shared_ptr<Expr> x2);
 		virtual ~Or();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -182,7 +181,7 @@ namespace RavenInternal {
 		Not(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x);
 		virtual ~Not();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -195,7 +194,7 @@ namespace RavenInternal {
 		Rel(std::shared_ptr<Token> tok, std::shared_ptr<Expr> x1, std::shared_ptr<Expr> x2);
 		virtual ~Rel();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -208,7 +207,7 @@ namespace RavenInternal {
 		Stmt();
 		virtual ~Stmt();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -222,7 +221,7 @@ namespace RavenInternal {
 		If(std::shared_ptr<Expr> x, std::shared_ptr<Stmt> s);
 		virtual ~If();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr;
 		std::shared_ptr<Stmt> stmt;
 	};
@@ -238,7 +237,7 @@ namespace RavenInternal {
 		Else(std::shared_ptr<Expr> x, std::shared_ptr<Stmt> s1, std::shared_ptr<Stmt> s2);
 		virtual ~Else();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr;
 		std::shared_ptr<Stmt> stmt1, stmt2;
 	};
@@ -255,7 +254,7 @@ namespace RavenInternal {
 		While(std::shared_ptr<Expr> x, std::shared_ptr<Stmt> s);
 		virtual ~While();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr;
 		std::shared_ptr<Stmt> stmt;
 	};
@@ -270,7 +269,7 @@ namespace RavenInternal {
 		Set(std::shared_ptr<Id> i, std::shared_ptr<Expr> x);
 		virtual ~Set();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Id> id;
 		std::shared_ptr<Expr> expr;
 	};
@@ -288,9 +287,9 @@ namespace RavenInternal {
 	public:
 		Seq();
 		virtual ~Seq();
-		virtual void PushStmt();
+		virtual void PushStmt(std::shared_ptr<Stmt> stmt);
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::vector<std::shared_ptr<Stmt>> stmts;
 	};
 
@@ -305,7 +304,7 @@ namespace RavenInternal {
 		Break();
 		virtual ~Break();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -318,7 +317,7 @@ namespace RavenInternal {
 		Continue();
 		virtual ~Continue();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -332,7 +331,7 @@ namespace RavenInternal {
 		Return(std::shared_ptr<Expr> x);
 		virtual ~Return();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 		std::shared_ptr<Expr> expr;
 	};
 
@@ -347,7 +346,7 @@ namespace RavenInternal {
 		Empty();
 		virtual ~Empty();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
+	protected:
 	};
 
 	/***************************************************************************
@@ -364,8 +363,8 @@ namespace RavenInternal {
 		virtual ~Var();
 		virtual void PushVar(std::shared_ptr<Token> word);
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-	private:
-		std::shared_ptr<Token> vars;
+	protected:
+		std::vector<std::shared_ptr<Token>> vars;
 	};
 
 }

@@ -46,6 +46,12 @@ namespace RavenInternal {
 		static std::shared_ptr<Value> Mul(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
 		static std::shared_ptr<Value> Div(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
 		static std::shared_ptr<Value> Mod(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> Equal(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> NotEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> GreatThan(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> LessThan(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> GreatEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
+		static std::shared_ptr<Value> LessEqual(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
 		static Type Cast(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2);
 	private:
 		Type _type;

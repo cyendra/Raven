@@ -105,7 +105,7 @@
       <Filter>Source\头文件\Parser</Filter>
     </ClInclude>
     <ClInclude Include="Environment.h">
-      <Filter>Source\头文件</Filter>
+      <Filter>Source\头文件\Symbols</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +131,7 @@
       <Filter>Source\源文件\Parser</Filter>
     </ClCompile>
     <ClCompile Include="Environment.cpp">
-      <Filter>Source\源文件</Filter>
+      <Filter>Source\源文件\Symbols</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
