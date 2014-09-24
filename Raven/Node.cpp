@@ -235,11 +235,14 @@ namespace RavenInternal {
 	If::~If() { }
 	
 	std::shared_ptr<Value> If::Eval(Environment* env) {
+		env->NewEnv();
 		auto b = expr->Eval(env);
+		auto rs = Stmt::Eval(env);
 		if (b->GetBoolean()) {
-			return stmt->Eval(env);
+			rs = stmt->Eval(env);
 		}
-		return Stmt::Eval(env);
+		env->PopEnv();
+		return rs;
 	}
 
 
@@ -253,13 +256,17 @@ namespace RavenInternal {
 	Else::~Else() { }
 
 	std::shared_ptr<Value> Else::Eval(Environment* env) {
+		env->NewEnv();
 		auto b = expr->Eval(env);
+		auto rs = Stmt::Eval(env);
 		if (b->GetBoolean()) {
-			return stmt1->Eval(env);
+			rs = stmt1->Eval(env);
 		}
 		else {
-			return stmt2->Eval(env);
+			rs = stmt2->Eval(env);
 		}
+		env->PopEnv();
+		return rs;
 	}
 	
 	/***************************************************************************
@@ -272,7 +279,8 @@ namespace RavenInternal {
 	While::~While() { }
 	
 	std::shared_ptr<Value> While::Eval(Environment* env) {
-		auto rs = std::shared_ptr<Value>(new Value());
+		auto rs = Stmt::Eval(env);
+		env->NewEnv();
 		for (;;) {
 			auto b = expr->Eval(env);
 			if (b->GetBoolean() == false) break;
@@ -280,6 +288,7 @@ namespace RavenInternal {
 			if (rs->IsCtrl(Value::BREAK) || rs->IsCtrl(Value::RETURN)) break;
 		}
 		if (rs->IsCtrl(Value::BREAK)) rs->SetCtrl(Value::NONE);
+		env->PopEnv();
 		return rs;
 	}
 
