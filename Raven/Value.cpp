@@ -75,7 +75,7 @@ namespace RavenInternal {
 		}
 	}
 
-	std::shared_ptr<Value> Value::Add(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
+	std::shared_ptr<Value> Value::Sub(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {
 		auto tp = Cast(tp1, tp2);
 		if (tp == Type::REAL) {
 			double v = tp1->GetReal() - tp2->GetReal();
