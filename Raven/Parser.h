@@ -21,7 +21,7 @@ namespace RavenInternal {
 	class Parser {
 	public:
 		Parser();
-		virtual ~Parser();
+		~Parser();
 		std::shared_ptr<Stmt> GetStmt();
 		std::shared_ptr<Expr> GetExpr();
 	private:

@@ -309,15 +309,15 @@ namespace RavenInternal {
 	}
 
 	/***************************************************************************
-	Set
+	Assign
 	***************************************************************************/
 
-	Set::Set(std::shared_ptr<Id> i, std::shared_ptr<Expr> x)
+	Assign::Assign(std::shared_ptr<Id> i, std::shared_ptr<Expr> x)
 		: Stmt(), id(i), expr(x) { }
 
-	Set::~Set() { }
+	Assign::~Assign() { }
 	
-	std::shared_ptr<Value> Set::Eval(Environment* env) {
+	std::shared_ptr<Value> Assign::Eval(Environment* env) {
 		auto v = expr->Eval(env);
 		env->SetIdValue(id->GetIdToken(), v);
 		return v;

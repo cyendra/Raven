@@ -17,7 +17,7 @@ Stmt	< Node			一条语句
 If		< Stmt			条件分支
 Else	< Stmt			选择分支
 while	< Stmt			循环语句
-Set		< Stmt			赋值语句
+Assign	< Stmt			赋值语句
 Seq		< Stmt			语句序列
 Break	< Stmt			跳出语句
 Continue< Stmt			继续语句
@@ -42,7 +42,7 @@ namespace RavenInternal {
 		对于表达式，返回表达式的值
 		对于语句，返回语句的值
 		默认返回空值
-	变量_lexLine表示当前结点在源文件中的行号，提供Get与Set方法来访问
+	变量_lexLine表示当前结点在源文件中的行号，提供Get与Assign方法来访问
 	Error表示当前结点运行时出错，它接受一个字符串，输出错误信息
 	***************************************************************************/
 
@@ -263,14 +263,14 @@ namespace RavenInternal {
 	};
 
 	/***************************************************************************
-	Set 赋值语句
+	Assign 赋值语句
 	不可以对未定义的变量赋值，这个是常识啦
 	***************************************************************************/
 
-	class Set : public Stmt {
+	class Assign : public Stmt {
 	public:
-		Set(std::shared_ptr<Id> i, std::shared_ptr<Expr> x);
-		virtual ~Set();
+		Assign(std::shared_ptr<Id> i, std::shared_ptr<Expr> x);
+		virtual ~Assign();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
 	protected:
 		std::shared_ptr<Id> id;
