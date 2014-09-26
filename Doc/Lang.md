@@ -1,18 +1,18 @@
 ﻿				
 	Raven v0.1 语法
 	stmts	 -> stmts stmt
-	stmt     -> decls;
+	stmt     -> var decls;
 			  | if bool then stmt;
 			  | if bool then stmt else stmt;
 			  | while bool do stmt;
 			  | block;
 			  | break;
 			  | continue;
-	decls	 -> var decl;
-	decl	 -> set
-			  | decl, set
-	set		 -> loc
-			  | loc := bool
+			  | Assign;
+	decls	 -> decl
+			  | decl, decls
+	decl	 -> loc
+	Assign	 -> loc := bool
 	block    -> begin stmts end
 	loc      -> id
 	bool     -> bool or join
@@ -43,8 +43,7 @@
 			  | real
 			  | true
 			  | false
-	integer  -> [1-9][0-9]*
-			  | 0
+	integer  -> [0-9]+
 	real	 -> [0-9]+\.[0-9]+
 
 
