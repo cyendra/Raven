@@ -49,7 +49,23 @@ namespace RavenInternal {
 	Id::~Id() { }
 
 	std::shared_ptr<Value> Id::Eval(Environment* env) {
-		return env->GetIdValue(op);
+		switch (op->GetType()) {
+		case Token::INTEGER:
+			return std::shared_ptr<Value>(new IntegerValue(op->GetInteger));
+		case Token::REAL:
+			return std::shared_ptr<Value>(new RealValue(op->GetReal));
+		case Token::TRUE:
+			return std::shared_ptr<Value>(new BooleanValue(true));
+		case Token::FALSE:
+			return std::shared_ptr<Value>(new BooleanValue(true));
+		case Token::STRING:
+			return std::shared_ptr<Value>(new StringValue(op->GetString()));
+		case Token::IDENTIFIER:
+			return env->GetIdValue(op);
+		default:
+			break;
+		}
+		return std::shared_ptr<Value>(new Value());
 	}
 
 	std::shared_ptr<Token> Id::GetIdToken() {

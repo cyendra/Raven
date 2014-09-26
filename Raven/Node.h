@@ -76,6 +76,8 @@ namespace RavenInternal {
 	/***************************************************************************
 	Id 标识符
 	标识符结点是一个叶子结点
+	等等我忽然发现这个东西还要包括各种字面常量，不然没法搞
+	所以还要根据token的类型搞他自己的值
 	执行Eval操作会得到该标识符的值
 	如果符号表env中没有该标识符的话会报错
 	***************************************************************************/
@@ -85,7 +87,7 @@ namespace RavenInternal {
 		Id(std::shared_ptr<Token> tok);
 		virtual ~Id();
 		virtual std::shared_ptr<Value> Eval(Environment* env);
-		virtual std::shared_ptr<Token> GetIdToken();
+		virtual std::shared_ptr<Token> Id::GetIdToken();
 	protected:
 	};
 
