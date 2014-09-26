@@ -419,6 +419,11 @@ namespace RavenInternal {
 	std::shared_ptr<Token> WordToken::ModWord() {
 		return std::shared_ptr<Token>(new WordToken(Tag::MOD, "%"));
 	}
+
+	std::shared_ptr<Token> WordToken::MinusWord() {
+		return std::shared_ptr<Token>(new WordToken(Tag::MINUS, "-"));
+	}
+
 #pragma endregion
 
 #pragma region 赋值与比较运算

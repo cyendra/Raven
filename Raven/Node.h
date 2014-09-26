@@ -4,6 +4,7 @@ Developer: cyendra
 Classes:
 Node
 Expr	< Node			表达式
+Constant< Expr			字面常量
 Id		< Expr			标识符
 Op		< Expr			运算符
 Arith	< Op			双目运算符
@@ -74,10 +75,23 @@ namespace RavenInternal {
 	};
 
 	/***************************************************************************
+	Constant 常量
+	常量结点是一个叶子结点
+	所以还要根据token的类型搞他自己的值
+	执行Eval操作会得到该常量的值
+	***************************************************************************/
+
+	class Constant : public Expr {
+	public:
+		Constant(std::shared_ptr<Token> tok);
+		virtual ~Constant();
+		virtual std::shared_ptr<Value> Eval(Environment* env);
+	private:
+	};
+
+	/***************************************************************************
 	Id 标识符
 	标识符结点是一个叶子结点
-	等等我忽然发现这个东西还要包括各种字面常量，不然没法搞
-	所以还要根据token的类型搞他自己的值
 	执行Eval操作会得到该标识符的值
 	如果符号表env中没有该标识符的话会报错
 	***************************************************************************/

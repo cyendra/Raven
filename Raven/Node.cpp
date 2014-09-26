@@ -41,14 +41,14 @@ namespace RavenInternal {
 	}
 
 	/***************************************************************************
-	Id
+	Constant
 	***************************************************************************/
 
-	Id::Id(std::shared_ptr<Token> tok) : Expr(tok) { }
+	Constant::Constant(std::shared_ptr<Token> tok) : Expr(tok) { }
 
-	Id::~Id() { }
+	Constant::~Constant() { }
 
-	std::shared_ptr<Value> Id::Eval(Environment* env) {
+	std::shared_ptr<Value> Constant::Eval(Environment* env) {
 		switch (op->GetType()) {
 		case Token::INTEGER:
 			return std::shared_ptr<Value>(new IntegerValue(op->GetInteger));
@@ -60,12 +60,22 @@ namespace RavenInternal {
 			return std::shared_ptr<Value>(new BooleanValue(true));
 		case Token::STRING:
 			return std::shared_ptr<Value>(new StringValue(op->GetString()));
-		case Token::IDENTIFIER:
-			return env->GetIdValue(op);
 		default:
 			break;
 		}
 		return std::shared_ptr<Value>(new Value());
+	}
+
+	/***************************************************************************
+	Id
+	***************************************************************************/
+
+	Id::Id(std::shared_ptr<Token> tok) : Expr(tok) { }
+
+	Id::~Id() { }
+
+	std::shared_ptr<Value> Id::Eval(Environment* env) {
+		return env->GetIdValue(op);
 	}
 
 	std::shared_ptr<Token> Id::GetIdToken() {

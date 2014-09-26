@@ -177,6 +177,7 @@ namespace RavenInternal {
 		static std::shared_ptr<Token> MulWord();
 		static std::shared_ptr<Token> DivWord();
 		static std::shared_ptr<Token> ModWord();
+		static std::shared_ptr<Token> MinusWord();
 #pragma endregion
 
 #pragma region 赋值与比较运算
