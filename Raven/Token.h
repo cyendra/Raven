@@ -5,9 +5,9 @@ Classes:
 Token
 IntegerToken < Token		整型常量
 RealToken < Token			实型常量
-BooleanToken < Token		布尔型常量
+BooleanToken < Token		布尔型常量		!貌似这个东西根本解析不出来，已废弃
 StringToken < Token			字符串型常量
-WordToken < Token			保留字工厂
+WordToken < Token			保留字工厂		!定义布尔型常量为保留字
 ***************************************************************************/
 
 #pragma once
@@ -145,18 +145,30 @@ namespace RavenInternal {
 		WordToken();
 		WordToken(Tag type, std::string text);
 		virtual ~WordToken();
+
+		// 以字符串形式取得关键字
 		static std::shared_ptr<Token> GetWord(std::string word);
+		
+		// 符号取得
 		static std::shared_ptr<Token> GetWord(char word);
-		static std::shared_ptr<Token> VarWord();
-		static std::shared_ptr<Token> IfWord();
-		static std::shared_ptr<Token> ThenWord();
-		static std::shared_ptr<Token> ElseWord();
-		static std::shared_ptr<Token> WhileWord();
-		static std::shared_ptr<Token> DoWord();
-		static std::shared_ptr<Token> BeginWord();
-		static std::shared_ptr<Token> EndWord();
-		static std::shared_ptr<Token> BreakWord();
-		static std::shared_ptr<Token> ContinueWord();
+
+#pragma region 关键字
+		static std::shared_ptr<Token> TrueWord(); // true
+		static std::shared_ptr<Token> FalseWord(); // false
+		static std::shared_ptr<Token> VarWord(); // var
+		static std::shared_ptr<Token> IfWord(); // if
+		static std::shared_ptr<Token> ThenWord(); // then
+		static std::shared_ptr<Token> ElseWord(); // else
+		static std::shared_ptr<Token> WhileWord(); // while
+		static std::shared_ptr<Token> DoWord(); // do
+		static std::shared_ptr<Token> BeginWord(); // begin
+		static std::shared_ptr<Token> EndWord(); // end
+		static std::shared_ptr<Token> BreakWord(); // break
+		static std::shared_ptr<Token> ContinueWord(); // continue
+		static std::shared_ptr<Token> ReturnWord(); // return  
+#pragma endregion
+
+#pragma region 逻辑运算符与算数运算符
 		static std::shared_ptr<Token> AndWord();
 		static std::shared_ptr<Token> OrWord();
 		static std::shared_ptr<Token> NotWord();
@@ -165,7 +177,9 @@ namespace RavenInternal {
 		static std::shared_ptr<Token> MulWord();
 		static std::shared_ptr<Token> DivWord();
 		static std::shared_ptr<Token> ModWord();
-		static std::shared_ptr<Token> MinusWord();
+#pragma endregion
+
+#pragma region 赋值与比较运算
 		static std::shared_ptr<Token> AssignWord();
 		static std::shared_ptr<Token> EqWord();
 		static std::shared_ptr<Token> GtWord();
@@ -173,16 +187,25 @@ namespace RavenInternal {
 		static std::shared_ptr<Token> GeWord();
 		static std::shared_ptr<Token> LeWord();
 		static std::shared_ptr<Token> NeWord();
+#pragma endregion
+
+
+#pragma region 特殊符号们
 		static std::shared_ptr<Token> LpWord();
 		static std::shared_ptr<Token> RpWord();
 		static std::shared_ptr<Token> LcWord();
 		static std::shared_ptr<Token> RcWord();
-		static std::shared_ptr<Token> IdentifierWord(std::string word);
 		static std::shared_ptr<Token> SemWord();
-		static std::shared_ptr<Token> EofWord();
 		static std::shared_ptr<Token> DotWord();
 		static std::shared_ptr<Token> CommaWord();
+#pragma endregion
+
+#pragma region 不明觉厉类
+		static std::shared_ptr<Token> IdentifierWord(std::string word);
+		static std::shared_ptr<Token> EofWord();
 		static std::shared_ptr<Token> UnkownWord(char chr);
+#pragma endregion
+
 	};
 
 }

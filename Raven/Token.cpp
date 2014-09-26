@@ -231,11 +231,21 @@ namespace RavenInternal {
 
 	std::shared_ptr<Token> WordToken::GetWord(std::string word) {
 		DISPLAY(0, word, word.size());
-		if (word == "var") {
+		// 关键字们
+		if (word == "true") {
+			return TrueWord();
+		}
+		else if (word == "false") {
+			return FalseWord();
+		}
+		else if (word == "var") {
 			return VarWord();
 		}
 		else if (word == "if") {
 			return IfWord();
+		}
+		else if (word == "then") {
+			return ThenWord();
 		}
 		else if (word == "else") {
 			return ElseWord();
@@ -258,6 +268,10 @@ namespace RavenInternal {
 		else if (word == "continue") {
 			return ContinueWord();
 		}
+		else if (word == "return") {
+			return ReturnWord();
+		}
+		// 逻辑与或非
 		else if (word == "and") {
 			return AndWord();
 		}
@@ -267,6 +281,7 @@ namespace RavenInternal {
 		else if (word == "not") {
 			return NotWord();
 		}
+		// 通常是变量
 		else {
 			return IdentifierWord(word);
 		}
@@ -274,6 +289,8 @@ namespace RavenInternal {
 
 	std::shared_ptr<Token> WordToken::GetWord(char word){
 		switch (word) {
+
+		// 运算符
 		case '+':
 			return AddWord();
 		case '-':
@@ -284,14 +301,16 @@ namespace RavenInternal {
 			return DivWord();
 		case '%':
 			return ModWord();
+
+		// 比较运算符
 		case '=':
 			return EqWord();
 		case '>':
 			return GtWord();
 		case '<':
 			return LtWord();
-		case '.':
-			return DotWord();
+		
+		// 括弧们
 		case '(':
 			return LpWord();
 		case ')':
@@ -300,9 +319,25 @@ namespace RavenInternal {
 			return LcWord();
 		case '}':
 			return RcWord();
+
+		// 点逗和其他
+		case '.':
+			return DotWord();
+		case ',':
+			return CommaWord();
 		default:
 			return UnkownWord(word);
 		}
+	}
+
+#pragma region 关键字
+
+	std::shared_ptr<Token> WordToken::TrueWord() {
+		return std::shared_ptr<Token>(new WordToken(Tag::TRUE, "true"));
+	}
+
+	std::shared_ptr<Token> WordToken::FalseWord() {
+		return std::shared_ptr<Token>(new WordToken(Tag::FALSE, "false"));
 	}
 
 	std::shared_ptr<Token> WordToken::VarWord() {
@@ -345,6 +380,14 @@ namespace RavenInternal {
 		return std::shared_ptr<Token>(new WordToken(Tag::CONTINUE,"continue"));
 	}
 
+	std::shared_ptr<Token> WordToken::ReturnWord() {
+		return std::shared_ptr<Token>(new WordToken(Tag::RETURN, "return"));
+	}
+
+#pragma endregion
+
+#pragma region 逻辑运算符与算数运算符
+
 	std::shared_ptr<Token> WordToken::AndWord(){ 
 		return std::shared_ptr<Token>(new WordToken(Tag::AND,"and"));
 	}
@@ -376,6 +419,9 @@ namespace RavenInternal {
 	std::shared_ptr<Token> WordToken::ModWord() {
 		return std::shared_ptr<Token>(new WordToken(Tag::MOD, "%"));
 	}
+#pragma endregion
+
+#pragma region 赋值与比较运算
 
 	std::shared_ptr<Token> WordToken::AssignWord() {
 		return std::shared_ptr<Token>(new WordToken(Tag::ASSIGN, ":="));
@@ -405,6 +451,10 @@ namespace RavenInternal {
 		return std::shared_ptr<Token>(new WordToken(Tag::NE, "<>"));
 	}
 
+#pragma endregion
+
+#pragma region 特殊符号们
+
 	std::shared_ptr<Token> WordToken::LpWord() {
 		return std::shared_ptr<Token>(new WordToken(Tag::LP, "("));
 	}
@@ -421,16 +471,8 @@ namespace RavenInternal {
 		return std::shared_ptr<Token>(new WordToken(Tag::RC, "}"));
 	}
 
-	std::shared_ptr<Token> WordToken::IdentifierWord(std::string word) {
-		return std::shared_ptr<Token>(new WordToken(Tag::IDENTIFIER, word));
-	}
-
-	std::shared_ptr<Token> WordToken::SemWord() { 
+	std::shared_ptr<Token> WordToken::SemWord() {
 		return std::shared_ptr<Token>(new WordToken(Tag::SEM, ";"));
-	}
-
-	std::shared_ptr<Token> WordToken::EofWord() {
-		return std::shared_ptr<Token>(new WordToken(Tag::END_OF_FILE, "EOF"));
 	}
 
 	std::shared_ptr<Token> WordToken::DotWord() {
@@ -441,10 +483,24 @@ namespace RavenInternal {
 		return std::shared_ptr<Token>(new WordToken(Tag::COMMA, ","));
 	}
 
+#pragma endregion
+
+#pragma region 不明觉厉类
+
+	std::shared_ptr<Token> WordToken::IdentifierWord(std::string word) {
+		return std::shared_ptr<Token>(new WordToken(Tag::IDENTIFIER, word));
+	}
+
+	std::shared_ptr<Token> WordToken::EofWord() {
+		return std::shared_ptr<Token>(new WordToken(Tag::END_OF_FILE, "EOF"));
+	}
+
 	std::shared_ptr<Token> WordToken::UnkownWord(char chr) { 
 		std::string text;
 		text.push_back(chr);
 		return std::shared_ptr<Token>(new WordToken(Tag::UNKOWN, text)); 
 	}
+
+#pragma endregion
 
 }
