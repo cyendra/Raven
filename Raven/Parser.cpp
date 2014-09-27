@@ -55,7 +55,39 @@ namespace RavenInternal {
 
 	// 吃掉一条语句
 	std::shared_ptr<Stmt> Parser::stmt() {
-		
+		auto look = Peek();
+		std::shared_ptr<Expr> x;
+		std::shared_ptr<Stmt> x, s1, s2;
+		switch (look->GetType()) {
+		case Token::SEM:
+			Match(Token::SEM);
+			return std::shared_ptr<Empty>(new Empty());
+		case Token::IF:
+			Match(Token::IF);
+			x = boolean();
+			Match(Token::THEN);
+			s1 = stmt();
+			if (Peek()->IsType(Token::ELSE) == false) {
+				Match(Token::SEM);
+				return std::shared_ptr<If>(new If(x, s1));
+			}
+			Match(Token::ELSE);
+			s2 = stmt();
+			return std::shared_ptr<Else>(new Else(x, s1, s2));
+		case Token::WHILE:
+			Match(Token::WHILE);
+			x = boolean();
+			Match(Token::DO);
+			s1 = stmt();
+			return std::shared_ptr<While>(new While(x, s1));
+		case Token::BREAK:
+			Match(Token::BREAK);
+		case Token::BEGIN:
+			Match(Token::BEGIN);
+		default:
+			break;
+		}
+
 	}
 	
 	// 吃掉一个代码块

@@ -2,10 +2,10 @@
 	Raven v0.1 语法
 	stmts	 -> stmts stmt
 	stmt     -> var decls;
-			  | if bool then stmt;
-			  | if bool then stmt else stmt;
+			  | if bool then stmt
+			  | if bool then stmt else stmt
 			  | while bool do stmt;
-			  | block;
+			  | block
 			  | break;
 			  | continue;
 			  | Assign;
@@ -55,7 +55,5 @@
 	( ) { }
 	; . ,
 	
-
-
 
 
