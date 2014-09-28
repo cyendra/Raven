@@ -88,6 +88,7 @@
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="Raven.h" />
     <ClInclude Include="Reader.h" />
     <ClInclude Include="std.h" />
     <ClInclude Include="TestTool.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Raven.cpp" />
     <ClCompile Include="Reader.cpp" />
     <ClCompile Include="Token.cpp" />
     <ClCompile Include="Value.cpp" />

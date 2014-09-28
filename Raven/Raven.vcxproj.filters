@@ -108,6 +108,9 @@
     <ClInclude Include="Environment.h">
       <Filter>Source\头文件\Symbols</Filter>
     </ClInclude>
+    <ClInclude Include="Raven.h">
+      <Filter>Source\头文件\Raven</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Token.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="Environment.cpp">
       <Filter>Source\源文件\Symbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Raven.cpp">
+      <Filter>Source\源文件\Raven</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
