@@ -41,6 +41,10 @@ namespace RavenInternal {
 		lex.Read();
 	}
 
+	void Parser::MoveIf(Token::Tag type) {
+		if (Peek()->IsType(type)) Move();
+	}
+
 	// 错误
 	void Parser::Error(std::string msg) {
 		std::cerr << "Error " << msg << std::endl;
@@ -57,11 +61,13 @@ namespace RavenInternal {
 	std::shared_ptr<Stmt> Parser::stmt() {
 		auto look = Peek();
 		std::shared_ptr<Expr> x;
-		std::shared_ptr<Stmt> x, s1, s2;
+		std::shared_ptr<Stmt> s, s1, s2;
+		std::shared_ptr<Stmt> res;
 		switch (look->GetType()) {
 		case Token::SEM:
 			Match(Token::SEM);
-			return std::shared_ptr<Empty>(new Empty());
+			res = std::shared_ptr<Empty>(new Empty());
+			break;
 		case Token::IF:
 			Match(Token::IF);
 			x = boolean();
@@ -69,45 +75,83 @@ namespace RavenInternal {
 			s1 = stmt();
 			if (Peek()->IsType(Token::ELSE) == false) {
 				Match(Token::SEM);
-				return std::shared_ptr<If>(new If(x, s1));
+				res = std::shared_ptr<If>(new If(x, s1));
+				break;
 			}
 			Match(Token::ELSE);
 			s2 = stmt();
-			return std::shared_ptr<Else>(new Else(x, s1, s2));
+			res = std::shared_ptr<Else>(new Else(x, s1, s2));
+			break;
 		case Token::WHILE:
 			Match(Token::WHILE);
 			x = boolean();
 			Match(Token::DO);
 			s1 = stmt();
-			return std::shared_ptr<While>(new While(x, s1));
+			res = std::shared_ptr<While>(new While(x, s1));
+			break;
 		case Token::BREAK:
 			Match(Token::BREAK);
+			res = std::shared_ptr<Break>(new Break());
+			break;
 		case Token::BEGIN:
-			Match(Token::BEGIN);
+			res = block();
+			break;
+		case Token::VAR:
+			res = decls();
+			break;
+		case Token::IDENTIFIER:
+			res = assign();
+			break;
 		default:
+			Error(Peek(), "Not Stmt Error");
 			break;
 		}
-
+		MoveIf(Token::SEM);
+		return res;
 	}
 	
 	// 吃掉一个代码块
 	std::shared_ptr<Stmt> Parser::block() {
-	
+		Match(Token::BEGIN);
+		auto s = stmts();
+		Match(Token::END);
+		return s;
 	}
 
 	// 吃掉好多个语句
 	std::shared_ptr<Stmt> Parser::stmts() {
-	
+		auto seq = std::shared_ptr<Seq>(new Seq());
+		while (Peek()->IsType(Token::END) == false) {
+			auto s = stmt();
+			seq->PushStmt(s);
+		}
+		return seq;
 	}
 	
 	// 吃掉一个赋值语句
 	std::shared_ptr<Stmt> Parser::assign() {
-	
+		auto tok = Peek();
+		auto id = std::shared_ptr<Id>(new Id(tok));
+		Match(Token::ASSIGN);
+		auto x = boolean();
+		auto ass = std::shared_ptr<Assign>(new Assign(id, x));
+		return ass;
 	}
 	
 	// 吃掉变量定义语句
 	std::shared_ptr<Stmt> Parser::decls() {
-
+		Match(Token::VAR);
+		auto dec = std::shared_ptr<Var>(new Var());
+		auto v = Peek();
+		dec->PushVar(v);
+		Move();
+		while (Peek()->IsType(Token::COMMA)) {
+			Match(Token::COMMA);
+			v = Peek();
+			dec->PushVar(v);
+			Move();
+		}
+		return dec;
 	}
 
 	std::shared_ptr<Expr> Parser::boolean() {
@@ -203,6 +247,7 @@ namespace RavenInternal {
 		else {
 			auto tok = Peek();
 			Error(tok, "syntax error");
+			return std::shared_ptr<Expr>(new Expr(tok));
 		}
 	}
 

@@ -33,6 +33,7 @@ namespace RavenInternal {
 		bool Look(Token::Tag type); // 判断下个Token是不是type类型
 		void Match(Token::Tag type); // 吃掉类型为type的Token，吃不着则报错
 		void Move(); // 无条件移动一步
+		void MoveIf(Token::Tag type); // 如果下个Token的类型是type则移动，否则什么也不做
 		void Error(std::string msg); // 错误
 		void Error(std::shared_ptr<Token> tok, std::string msg); // 带词法单元的错误
 

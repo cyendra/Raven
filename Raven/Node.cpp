@@ -51,9 +51,9 @@ namespace RavenInternal {
 	std::shared_ptr<Value> Constant::Eval(Environment* env) {
 		switch (op->GetType()) {
 		case Token::INTEGER:
-			return std::shared_ptr<Value>(new IntegerValue(op->GetInteger));
+			return std::shared_ptr<Value>(new IntegerValue(op->GetInteger()));
 		case Token::REAL:
-			return std::shared_ptr<Value>(new RealValue(op->GetReal));
+			return std::shared_ptr<Value>(new RealValue(op->GetReal()));
 		case Token::TRUE:
 			return std::shared_ptr<Value>(new BooleanValue(true));
 		case Token::FALSE:
