@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Debug.h"
 
 namespace RavenInternal {
 
@@ -418,7 +419,15 @@ namespace RavenInternal {
 
 	std::shared_ptr<Value> Var::Eval(Environment* env) {
 		for each (auto var in vars) {
-			env->RegistId(var);
+			DEBUG(0, "Define Var : ");
+			CERR(0, var->GetText());
+			bool rs = env->RegistId(var);
+			if (!rs) {
+				// 不能这么写 暂时的
+				SetLexLine(var->GetLineNumber());
+				Error("Var " + var->GetString() + "has regist");
+			}
+
 		}
 		return Stmt::Eval(env);
 	}

@@ -81,6 +81,7 @@
     <None Include="..\Doc\Lang.md" />
     <None Include="..\Doc\Package.md" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />

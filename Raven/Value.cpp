@@ -53,7 +53,7 @@ namespace RavenInternal {
 	}
 
 	std::string Value::GetString() {
-		return "";
+		return "nil";
 	}
 
 	std::shared_ptr<Value> Value::Add(std::shared_ptr<Value> tp1, std::shared_ptr<Value> tp2) {

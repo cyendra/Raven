@@ -25,6 +25,7 @@ namespace RavenInternal {
 		~Parser();
 		std::shared_ptr<Stmt> GetStmt();
 		std::shared_ptr<Expr> GetExpr();
+		Environment* GetEnv();
 	private:
 		Lexer lex; // 词法分析器，按理说应该可以动态指定词法分析器，这里设成了静态指定，以后可以改
 		Environment env; // 符号表，可以动态搞，同样暂时设为静态

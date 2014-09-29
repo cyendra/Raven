@@ -1,17 +1,17 @@
 #include "TestTool.h"
 #include "Lexer.h"
 #include "Token.h"
+#include "Parser.h"
 
 using namespace Debug::TestTool;
 
 int main() {
 	
-	RavenInternal::Lexer lex;
+	RavenInternal::Parser parser;
 	for (;;) {
-		auto tok = lex.Read();
-		if (tok->IsType(RavenInternal::Token::END_OF_FILE)) break;
-		auto str = tok->GetText();
-		std::cout << str << std::endl;
+		auto stmt = parser.GetStmt();
+		auto res = stmt->Eval(parser.GetEnv());
+		std::cout << ">>> "<< res->GetString() << std::endl;
 	}
 
 	system("pause");

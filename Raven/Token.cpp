@@ -325,6 +325,8 @@ namespace RavenInternal {
 			return DotWord();
 		case ',':
 			return CommaWord();
+		case ';':
+			return SemWord();
 		default:
 			return UnkownWord(word);
 		}

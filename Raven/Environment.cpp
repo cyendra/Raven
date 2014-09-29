@@ -33,9 +33,13 @@ namespace RavenInternal {
 	Environment
 	***************************************************************************/
 
-	Environment::Environment() { }
+	Environment::Environment() {
+		NewEnv();
+	}
 
-	Environment::~Environment() { }
+	Environment::~Environment() {
+		PopEnv();
+	}
 
 	void Environment::NewEnv() {
 		auto p = std::shared_ptr<EnvNode>(new EnvNode());
@@ -79,9 +83,11 @@ namespace RavenInternal {
 		return node->HasVar(name);
 	}
 
-	void Environment::RegistId(std::shared_ptr<Token> tok) {
+	bool Environment::RegistId(std::shared_ptr<Token> tok) {
+		if (FindId(tok)) return false;
 		auto name = tok->GetText();
 		node->SetValue(name, std::shared_ptr<Value>(new Value()));
+		return true;
 	}
 
 }

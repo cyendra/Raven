@@ -43,7 +43,7 @@ namespace RavenInternal {
 		std::shared_ptr<Value> GetIdValue(std::shared_ptr<Token> tok);
 		void SetIdValue(std::shared_ptr<Token> tok, std::shared_ptr<Value> v);
 		bool FindId(std::shared_ptr<Token> tok);
-		void RegistId(std::shared_ptr<Token> tok);
+		bool RegistId(std::shared_ptr<Token> tok);
 	private:
 		std::shared_ptr<EnvNode> node;
 	};
