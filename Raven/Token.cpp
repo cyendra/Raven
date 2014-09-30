@@ -184,11 +184,11 @@ namespace RavenInternal {
 
 	StringToken::~StringToken() { }
 
-	StringToken::StringToken() : Token(Tag::BOOLEAN), _value("") { }
+	StringToken::StringToken() : Token(Tag::STRING), _value("") { }
 
-	StringToken::StringToken(std::string value, std::string text) : Token(Tag::BOOLEAN, text), _value(value) { }
+	StringToken::StringToken(std::string value, std::string text) : Token(Tag::STRING, text), _value(value) { }
 
-	StringToken::StringToken(std::string text) : Token(Tag::BOOLEAN, text) {
+	StringToken::StringToken(std::string text) : Token(Tag::STRING, text) {
 		int size = text.length();
 		_value = text.substr(1, size - 2);
 	}
@@ -215,8 +215,8 @@ namespace RavenInternal {
 		return _value;
 	}
 
-	std::shared_ptr<Token> StringToken::GetToken(std::string value, std::string text) {
-		return std::shared_ptr<Token>(new StringToken(value, text));
+	std::shared_ptr<Token> StringToken::GetToken(std::string text) {
+		return std::shared_ptr<Token>(new StringToken(text));
 	}
 
 	/***************************************************************************

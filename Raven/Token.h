@@ -131,7 +131,7 @@ namespace RavenInternal {
 		virtual bool GetBoolean();
 		virtual std::string GetString();
 		virtual ~StringToken();
-		static std::shared_ptr<Token> GetToken(std::string value, std::string text);
+		static std::shared_ptr<Token> GetToken(std::string text);
 	private:
 		std::string _value;
 	};

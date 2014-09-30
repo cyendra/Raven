@@ -87,6 +87,17 @@ namespace RavenInternal {
 		default:
 			break;
 		}
+		if (peek == '\"') {
+			std::string txt;
+			txt.push_back(peek);
+			do {
+				Readch();
+				if (peek == '\0') return Token::GetEOL();
+				txt.push_back(peek);
+			} while (peek!='\"');
+			peek = ' ';
+			return StringToken::GetToken(txt);
+		}
 		if (isdigit(peek)) {
 			int v = 0;
 			std::string text;
