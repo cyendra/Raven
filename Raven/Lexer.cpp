@@ -141,6 +141,10 @@ namespace RavenInternal {
 	void Lexer::Readch() {
 		if (pos < (int)buf.length()) {
 			peek = buf[pos++];
+			if (peek == '#') {
+				pos = buf.length();
+				peek = 0;
+			}
 		}
 		else {
 			peek = 0;

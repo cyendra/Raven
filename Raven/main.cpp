@@ -1,19 +1,7 @@
-#include "TestTool.h"
-#include "Lexer.h"
-#include "Token.h"
-#include "Parser.h"
-
-using namespace Debug::TestTool;
-
+#include "Raven.h"
 int main() {
-	
-	RavenInternal::Parser parser;
-	for (;;) {
-		auto stmt = parser.GetStmt();
-		auto res = stmt->Eval(parser.GetEnv());
-		std::cout << ">>> "<< res->GetString() << std::endl;
-	}
-
+	auto interpreter = Raven::Interpreter();
+	interpreter->Run();
 	system("pause");
 	return 0;
 }
